@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Game/World/SubWorld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/World/GameRoom.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Modules/newFloorExample/Floors/helloWorld.gd" type="Script" id=3]
+
+[node name="hello world!" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Entrance" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 0, -64 )
+roomName = "Entrance"
+roomID = "helloWorldEntrance"
+roomDescription = "Entance"
+roomSprite = 3
+
+[node name="theRoom" parent="." index="1" instance=ExtResource( 2 )]
+self_modulate = Color( 1, 0.6, 0.8, 1 )
+position = Vector2( 0, -128 )
+roomName = "Entrance"
+roomID = "helloWorldRahi"
+roomDescription = "rahi real????? :scream:"
+roomSprite = 1
+roomColor = 4
+
+[connection signal="onPreEnter" from="Entrance" to="." method="_on_Entrance_onPreEnter"]
+[connection signal="onEnter" from="theRoom" to="." method="_on_theRoom_onEnter"]
+[connection signal="onReact" from="theRoom" to="." method="_on_theRoom_onReact"]
